@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Giftify - Online Gift Store</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6f9;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 60px 8%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header {
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 8%;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.search-bar {
+    display: flex;
+    background: #f1f5f9;
+    padding: 8px 15px;
+    border-radius: 25px;
+    width: 40%;
+    transition: 0.3s;
+}
+
+.search-bar:focus-within {
+    box-shadow: 0 0 10px rgba(37,99,235,0.3);
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+.icons i {
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.icons i:hover {
+    color: #2563eb;
+    transform: scale(1.2);
+}
+
+.hero {
+    background: linear-gradient(to right,#2563eb,#3b82f6);
+    color: #fff;
+    text-align: center;
+    padding: 120px 8%;
+    animation: fadeIn 1.5s ease;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: #fff;
+    color: #2563eb;
+    border-radius: 30px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #1e40af;
+    color: #fff;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 20px;
+}
+
+.category-card {
+    background: #fff;
+    padding: 30px;
+    text-align: center;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    background: #2563eb;
+    color: #fff;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-card {
+    background: #fff;
+    width: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.3s;
+    animation: fadeUp 0.5s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-info {
+    text-align: center;
+    padding: 15px;
+}
+
+.price {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.buy-btn {
+    background: #2563eb;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 25px;
+    display: inline-block;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.buy-btn:hover {
+    background: #1e40af;
+}
+
+.about {
+    background: #e2e8f0;
+    text-align: center;
+}
+
+footer {
+    background: #1e293b;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="navbar">
+        <div class="logo">Giftify</div>
+
+        <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Search gifts...">
+        </div>
+
+        <div class="icons">
+            <i class="fa fa-user"></i>
+            <i class="fa fa-cart-shopping"></i>
+            <i class="fa fa-gear"></i>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Find The Perfect Gift 🎁</h1>
+    <p>Surprise your loved ones with beautiful gifts.</p>
+    <a href="#" class="btn">Shop Now</a>
+</section>
+
+<section>
+    <h2>Gift Categories</h2>
+    <div class="categories">
+        <div class="category-card" onclick="filterCategory('Birthday')"><h3>Birthday Gifts</h3></div>
+        <div class="category-card" onclick="filterCategory('Anniversary')"><h3>Anniversary Gifts</h3></div>
+        <div class="category-card" onclick="filterCategory('Personalized')"><h3>Personalized Gifts</h3></div>
+        <div class="category-card" onclick="filterCategory('Festival')"><h3>Festival Gifts</h3></div>
+        <div class="category-card" onclick="filterCategory('All')"><h3>All</h3></div>
+    </div>
+</section>
+
+<section>
+    <h2>Featured Products</h2>
+    <div class="products" id="productContainer"></div>
+</section>
+
+<section class="about">
+    <h2>About Giftify</h2>
+    <p>Giftify is your one-stop destination for perfect gifts.</p>
+</section>
+
+<footer>
+    <p>© 2026 Giftify</p>
+</footer>
+
+<script>
+const products = [
+    {name:"Luxury Gift Box", price:1499, category:"Festival", img:"https://img.freepik.com/premium-photo/luxury-gift-box_1063985-30412.jpg"},
+    {name:"Flower Surprise", price:999, category:"Anniversary", img:"https://cannock.florist/wp-content/uploads/2022/10/opticalFlares_1567452404-583x1024.jpg"},
+    {name:"Indoor Plants", price:800, category:"Birthday", img:"https://www.giftalove.com/blog/wp-content/uploads/Useful-Tips-to-Take-Care-of-Your-Indoor-Plants.jpg"},
+    {name:"Valentine Hamper", price:1500, category:"Anniversary", img:"https://casolia.com/wp-content/uploads/2025/07/image0_valentines-gift-basket-ideas_valentines-gift-basket-ideas.jpg"},
+    {name:"Cute Teddy", price:799, category:"Birthday", img:"https://wallpapercave.com/wp/wp3257958.jpg"},
+    {name:"Chocolate Box", price:999, category:"Festival", img:"https://m.media-amazon.com/images/I/619x4qh5MzL.jpg"},
+    {name:"Custom Painting", price:2000, category:"Personalized", img:"https://yfdecor.com/wp-content/uploads/2024/08/YFCK-018-img1-600x600.webp"},
+    {name:"Luxury Watch", price:5000, category:"Personalized", img:"https://i.etsystatic.com/15585963/r/il/e5f8c4/4771125062/il_1080xN.4771125062_oc6v.jpg"},
+    {name:"Perfume Set", price:2500, category:"Festival", img:"https://www.nisarabeauty.com/cdn/shop/files/4_77.webp?v=1759146414&width=1080"},
+    {name:"Photo Frame", price:700, category:"Personalized", img:"https://www.purehomeandliving.com/cdn/shop/files/8907895048716_2_b96982e3-0f99-451d-af56-ce734dce23cc.jpg?v=1705568199&width=1090"}
+];
+
+let filteredProducts = [...products];
+
+function displayProducts(list) {
+    const container = document.getElementById("productContainer");
+    container.innerHTML = "";
+
+    list.forEach(p => {
+        container.innerHTML += `
+        <div class="product-card">
+            <img src="${p.img}">
+            <div class="product-info">
+                <h4>${p.name}</h4>
+                <p class="price">₹${p.price}</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
+        </div>`;
+    });
+}
+
+document.getElementById("searchInput").addEventListener("keyup", function() {
+    const value = this.value.toLowerCase();
+    const result = filteredProducts.filter(p => p.name.toLowerCase().includes(value));
+    displayProducts(result);
+});
+
+function filterCategory(cat) {
+    filteredProducts = cat === "All" ? [...products] : products.filter(p => p.category === cat);
+    displayProducts(filteredProducts);
+}
+
+displayProducts(products);
+</script>
+
+</body>
+</html>
